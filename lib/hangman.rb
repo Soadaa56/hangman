@@ -1,4 +1,4 @@
 #hangman.rb
 
-require 'game.rb'
+require_relative './game.rb'
 Game.new.start
