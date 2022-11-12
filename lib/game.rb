@@ -1,9 +1,27 @@
 # game.rb
+
+require_relative './display'
 require 'pry-byebug'
 
 class Game
+  attr_accessor :word, :available_letters, :solved_letter, :incorrect_letters
+  include Display
+
   def initialize
-    @secret_word = generate_word
+    @available_letters = ('a'..'z').to_a
+    @solved_letter = Array.new
+    @incorrect_letters = Array.new
+    start_game
+  end
+
+  def start_game
+    puts display_instructions
+    new_game
+  end
+
+  def new_game
+    @word = generate_word
+    p @word
   end
 
   def generate_word
@@ -18,5 +36,8 @@ class Game
     file.close
   end
 
-  puts @secret_word
+
 end
+
+# playtesting purposes, will be moved to ./hangman.rb
+a = Game.new
