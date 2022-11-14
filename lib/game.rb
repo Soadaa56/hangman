@@ -19,14 +19,15 @@ class Game
     puts display_instructions
     new_game
     # Start new game on 1
-    # Load new game on 2
+    # Load saved game on 2
   end
 
   def new_game
     @word = generate_word.split('')
+    # puts '_' into seperate indices of equal length to random word
     @word.each { @solved_letters << '_'}
-    p @word
-    p @solved_letters
+    puts display_word_length
+    puts display_incomplete_word
   end
 
   def generate_word

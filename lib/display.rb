@@ -1,6 +1,7 @@
 # display.rb
 
 module Display
+
   def display_instructions
     <<~HEREDOC
 
@@ -12,4 +13,17 @@ module Display
     HEREDOC
   end
 
+  def display_word_length
+    <<~HEREDOC
+      Your random word is #{@word.length} letters long.
+
+    HEREDOC
+  end
+
+  def display_incomplete_word
+    <<~HEREDOC
+      #{@solved_letters}
+
+    HEREDOC
+  end
 end
