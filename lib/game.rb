@@ -10,7 +10,7 @@ class Game
 
   def initialize
     @available_letters = ('a'..'z').to_a
-    @solved_letter = []
+    @solved_letters = []
     @incorrect_letters = []
     start_game
   end
@@ -23,9 +23,10 @@ class Game
   end
 
   def new_game
-    @word = generate_word
-    # remove print from next line after debugging
+    @word = generate_word.split('')
+    @word.each { @solved_letters << '_'}
     p @word
+    p @solved_letters
   end
 
   def generate_word
