@@ -24,10 +24,9 @@ class Game
 
   def new_game
     @word = generate_word.downcase.split('')
-    # puts '_' into seperate indices of equal length to random word
+    # puts '_' into seperate indices of equal length to random word into an array @solved_letters
     @word.each { @solved_letters << '_'}
-    puts display_word_length
-    puts display_incomplete_word
+    player_turn
   end
 
   def generate_word
@@ -38,6 +37,10 @@ class Game
     end
     @valid_words = @valid_words.each.select { |word| word.length.between?(5,12) }
     @valid_words[rand(0..@valid_words.length)]
+  end
+
+  def player_turn
+    puts display_guesses_left
   end
 
 end

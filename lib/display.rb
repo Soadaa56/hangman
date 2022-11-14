@@ -22,7 +22,14 @@ module Display
 
   def display_incomplete_word
     <<~HEREDOC
-      #{@solved_letters}
+      #{@solved_letters.join('-')}
+
+    HEREDOC
+  end
+
+  def display_guesses_left
+    <<~HEREDOC
+      You have #{7 - incorrect_letters.length } lives left until game over.
 
     HEREDOC
   end
