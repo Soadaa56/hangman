@@ -43,4 +43,4 @@ class Game
 end
 
 # playtesting purposes, will be moved to ./hangman.rb
-a = Game.new
+Game.new
