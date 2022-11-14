@@ -23,7 +23,7 @@ class Game
   end
 
   def new_game
-    @word = generate_word.split('')
+    @word = generate_word.downcase.split('')
     # puts '_' into seperate indices of equal length to random word
     @word.each { @solved_letters << '_'}
     puts display_word_length
