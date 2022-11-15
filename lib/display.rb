@@ -33,4 +33,13 @@ module Display
 
     HEREDOC
   end
+
+  def display_player_option_inputs
+    <<~HEREDOC
+      Type 'help' to see these options again.
+      You may type 'save' at any point to save your game and return to it later.
+      'letters' will show you what letters you have not used yet.
+      'quit' will terminate the program.
+    HEREDOC
+  end
 end
