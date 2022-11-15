@@ -27,6 +27,7 @@ class Game
     @word = generate_word.downcase.split('')
     # puts '_' into seperate indices of equal length to random word into an array @solved_letters
     @word.each { @solved_letters << '_'}
+    puts display_word_length
     puts display_player_option_inputs
     player_turn
   end
@@ -76,6 +77,7 @@ class Game
   end
 
   def turn_update
+    #
     puts 'testing'
   end
 
