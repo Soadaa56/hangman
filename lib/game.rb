@@ -18,6 +18,7 @@ class Game
   def start_game
     puts display_instructions
     new_game
+    # future methods to be placed
     # Start new game on 1
     # Load saved game on 2
   end
@@ -36,6 +37,7 @@ class Game
     dictionary.each do |word|
       @valid_words << word.strip!
     end
+    # 5-12 letters helps to make the game neither too hard or too easy.
     @valid_words = @valid_words.each.select { |word| word.length.between?(5,12) }
     @valid_words[rand(0..@valid_words.length)]
   end
@@ -46,7 +48,35 @@ class Game
   end
 
   def player_input
-    
+    puts display_incomplete_word
+    puts display_ask_for_player_input
+    input = gets.chomp
+    case input
+    when 'help'
+      puts display_player_option_inputs
+      player_input
+    when 'save'
+      # comment here as reminder to change this text when save is added
+      # will be changed to a display_save_game method
+      puts 'This feature is not yet implemented'
+      player_input
+    when 'letters'
+      puts @available_letters
+      player_input
+    when 'quit'
+      # Still considering a 'are you sure you want to quit' method
+      display_quit_game
+      exit(true)
+    when ('a'..'z')
+      turn_update
+    else
+      display_case_else_statement
+      player_input
+    end
+  end
+
+  def turn_update
+    puts 'testing'
   end
 
 end
