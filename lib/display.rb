@@ -40,7 +40,7 @@ module Display
       Type 'help' to see these options again.
       Type 'save' at any point to save your game and return to it later.
       Type 'letters' will show you what letters you have not used yet.
-      Type 'quit' will terminate the program.
+      Type 'exit' will terminate the program.
 
     HEREDOC
   end
@@ -55,7 +55,7 @@ module Display
   def display_available_letters
     <<~HEREDOC
       #{@available_letters}
-      
+
     HEREDOC
   end
 

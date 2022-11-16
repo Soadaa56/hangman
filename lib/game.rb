@@ -51,7 +51,7 @@ class Game
   def player_input
     puts display_incomplete_word
     puts display_ask_for_player_input
-    input = gets.chomp
+    input = gets.chomp.downcase
     case input
     when 'help'
       puts display_player_option_inputs
@@ -64,11 +64,11 @@ class Game
     when 'letters'
       puts display_available_letters
       player_input
-    when 'quit'
+    when 'exit', 'quit'
       # Still considering a 'are you sure you want to quit' method
       display_quit_game
       exit(true)
-    when ('a'..'z')
+    when /^[a..z]/
       turn_update
     else
       display_case_else_statement
