@@ -29,6 +29,8 @@ class Game
     @word.each { @solved_letters << '_'}
     puts display_word_length
     puts display_player_option_inputs
+    # For debugging, delete
+    p @word
     player_turn
   end
 
@@ -38,7 +40,7 @@ class Game
     dictionary.each do |word|
       @valid_words << word.strip!
     end
-    # 5-12 letters helps to make the game neither too hard or too easy.
+    # 5-12 letters helps to make the game neither too hard nor easy.
     @valid_words = @valid_words.each.select { |word| word.length.between?(5,12) }
     @valid_words[rand(0..@valid_words.length)]
   end
@@ -51,9 +53,8 @@ class Game
   def player_input
     puts display_incomplete_word
     puts display_ask_for_player_input
-    binding.pry
-    input = gets.chomp.downcase
-    case input
+    @input = gets.chomp.downcase
+    case @input
     when 'help'
       puts display_player_option_inputs
       player_input
@@ -78,10 +79,31 @@ class Game
   end
 
   def turn_update
-    #
-    puts 'testing'
+    @available_letters.delete(@input)
+    correct_match_letters
+    incorrect_match_letters
+    player_turn
   end
 
+  def correct_match_letters
+    # replace the matched letter and save the index of the letter so that the 
+    # displayed @solved_letters shows letter in correct spot
+    if @word.any?(@input)
+      letter_index = @word.find_index(@input)
+      @word[letter_index].replace(nil.to_s)
+      @solved_letters[letter_index].replace(@input)
+      if @word.any?(@input)
+        correct_match_letters
+      end
+    end
+  end
+
+  def incorrect_match_letters
+    unless @word.any?(@input)
+      @incorrect_letters << @input
+      game_over_failure
+    end
+  end
 end
 
 # playtesting purposes, will be moved to ./hangman.rb
