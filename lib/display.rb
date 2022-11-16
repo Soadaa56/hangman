@@ -76,12 +76,14 @@ module Display
 
   def display_game_over_failure
     <<~HEREDOC
+      You lost all your lives! The word was #{@word_copy}
     HEREDOC
   end
 
   def display_game_over_failure
     <<~HEREDOC
       You figured out that the word was #{@solved_letters}. Congrats!
-    HEREDOC
+    
+      HEREDOC
   end
 end
