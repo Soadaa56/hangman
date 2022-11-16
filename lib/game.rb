@@ -25,6 +25,9 @@ class Game
 
   def new_game
     @word = generate_word.downcase.split('')
+    # Create a copy for my program to compare @solved_letters to @word_copy as victory condition
+    # @word has letters replaced each time a correct letter is found as my solution to words with multiple same letters.
+    @word_copy = @word
     # puts '_' into seperate indices of equal length to random word into an array @solved_letters
     @word.each { @solved_letters << '_'}
     puts display_word_length
@@ -67,7 +70,6 @@ class Game
       puts display_available_letters
       player_input
     when 'exit', 'quit'
-      # Still considering a 'are you sure you want to quit' method
       display_quit_game
       exit(true)
     when *@available_letters
@@ -96,12 +98,27 @@ class Game
         correct_match_letters
       end
     end
+    game_over_victory?
   end
 
   def incorrect_match_letters
-    unless @word.any?(@input)
+    unless !@word.any?(@input)
       @incorrect_letters << @input
-      game_over_failure
+      game_over_failure?
+    end
+  end
+
+  def game_over_failure?
+     if @incorrect_letters.length == 7
+      puts display_game_over_failure
+      exit
+     end
+  end
+
+  def game_over_victory?
+    if test @solved_letters == @word_copy
+      puts display_game_over_failure
+      exit
     end
   end
 end

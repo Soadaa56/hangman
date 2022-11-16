@@ -73,4 +73,15 @@ module Display
 
     HEREDOC
   end
+
+  def display_game_over_failure
+    <<~HEREDOC
+    HEREDOC
+  end
+
+  def display_game_over_failure
+    <<~HEREDOC
+      You figured out that the word was #{@solved_letters}. Congrats!
+    HEREDOC
+  end
 end
