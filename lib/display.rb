@@ -52,6 +52,14 @@ module Display
     HEREDOC
   end
 
+  def display_save_game
+    <<~HEREDOC
+
+      Saving game...
+
+    HEREDOC
+  end
+
   def display_available_letters
     <<~HEREDOC
       #{@available_letters}
@@ -76,13 +84,18 @@ module Display
 
   def display_game_over_failure
     <<~HEREDOC
-      You lost all your lives! The word was #{@word_copy}
+
+      You lost all your lives! The word was 
+      #{@word_copy}
+
     HEREDOC
   end
 
-  def display_game_over_failure
+  def display_game_over_victory
     <<~HEREDOC
-      You figured out that the word was #{@solved_letters}. Congrats!
+
+      Winner!!! You figured out that the word was 
+      #{@word_copy}
     
       HEREDOC
   end

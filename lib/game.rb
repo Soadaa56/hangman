@@ -27,13 +27,11 @@ class Game
     @word = generate_word.downcase.split('')
     # Create a copy for my program to compare @solved_letters to @word_copy as victory condition
     # @word has letters replaced each time a correct letter is found as my solution to words with multiple same letters.
-    @word_copy = @word
+    @word_copy = @word.clone.map(&:clone)
     # puts '_' into seperate indices of equal length to random word into an array @solved_letters
     @word.each { @solved_letters << '_'}
     puts display_word_length
     puts display_player_option_inputs
-    # For debugging, delete
-    p @word
     player_turn
   end
 
@@ -62,9 +60,12 @@ class Game
       puts display_player_option_inputs
       player_input
     when 'save'
+      display_save_game
+      sleep(1)
       # comment here as reminder to change this text when save is added
       # will be changed to a display_save_game method
       puts 'This feature is not yet implemented'
+      binding.pry
       player_input
     when 'letters'
       puts display_available_letters
@@ -82,8 +83,8 @@ class Game
 
   def turn_update
     @available_letters.delete(@input)
-    correct_match_letters
     incorrect_match_letters
+    correct_match_letters
     player_turn
   end
 
@@ -102,26 +103,23 @@ class Game
   end
 
   def incorrect_match_letters
-    unless !@word.any?(@input)
+    if !@word.any?(@input)
       @incorrect_letters << @input
       game_over_failure?
     end
   end
 
   def game_over_failure?
-     if @incorrect_letters.length == 7
+    if @incorrect_letters.length == 7
       puts display_game_over_failure
       exit
      end
   end
 
   def game_over_victory?
-    if test @solved_letters == @word_copy
-      puts display_game_over_failure
+    if @solved_letters == @word_copy
+      puts display_game_over_victory
       exit
     end
   end
 end
-
-# playtesting purposes, will be moved to ./hangman.rb
-Game.new
