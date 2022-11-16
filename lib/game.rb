@@ -62,7 +62,7 @@ class Game
       puts 'This feature is not yet implemented'
       player_input
     when 'letters'
-      puts @available_letters
+      puts display_available_letters
       player_input
     when 'quit'
       # Still considering a 'are you sure you want to quit' method

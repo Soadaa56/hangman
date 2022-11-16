@@ -52,6 +52,13 @@ module Display
     HEREDOC
   end
 
+  def display_available_letters
+    <<~HEREDOC
+      #{@available_letters}
+      
+    HEREDOC
+  end
+
   def display_quit_game
     <<~HEREDOC
       Terminating game...
