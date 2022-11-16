@@ -66,7 +66,7 @@ module Display
     HEREDOC
   end
 
-  def display_case_else_statement
+  def display_case_input_else_statement
     <<~HEREDOC
       I'm sorry, your input wasn't recognized. 
       Try a different letter or 'help' for more options.
