@@ -5,6 +5,7 @@ require_relative './database'
 require 'yaml'
 require 'pry-byebug'
 
+# Code for the game Hangman
 class Game
   attr_accessor :word, :available_letters, :solved_letter, :incorrect_letters
   
@@ -15,6 +16,7 @@ class Game
     @available_letters = ('a'..'z').to_a
     @solved_letters = []
     @incorrect_letters = []
+    @word = generate_word.downcase.split('')
     start_game
   end
 
@@ -27,11 +29,10 @@ class Game
   end
 
   def new_game
-    @word = generate_word.downcase.split('')
     # Create a copy for my program to compare @solved_letters to @word_copy as victory condition
     # @word has letters replaced each time a correct letter is found as my solution to words with multiple same letters.
     @word_copy = @word.clone.map(&:clone)
-    # puts '_' into seperate indices of equal length to random word into an array @solved_letters
+    # allows @solved_letters to have the same number of indecies to the amount @word has, so that it is displayed to the player before guessing
     @word.each { @solved_letters << '_'}
     puts display_word_length
     puts display_player_option_inputs
