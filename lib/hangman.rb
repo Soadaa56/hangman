@@ -1,4 +1,4 @@
 # hangman.rb
 
-require_relative './game.rb'
-game = Game.new
+require_relative './game'
+Game.new
