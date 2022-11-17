@@ -1,6 +1,7 @@
 # game.rb
 
 require_relative './display'
+require_relative './database'
 require 'yaml'
 require 'pry-byebug'
 
@@ -8,6 +9,7 @@ class Game
   attr_accessor :word, :available_letters, :solved_letter, :incorrect_letters
   
   include Display
+  include Database
 
   def initialize
     @available_letters = ('a'..'z').to_a
@@ -71,7 +73,7 @@ class Game
       puts display_available_letters
       player_input
     when 'exit', 'quit'
-      display_quit_game
+      puts display_quit_game
       exit(true)
     when *@available_letters
       turn_update
@@ -121,11 +123,5 @@ class Game
       puts display_game_over_victory
       exit
     end
-  end
-
-  def save_game
-    output = File.new('save_game.yml', 'w')
-    output.puts YAML.dump(game)
-    output.close
   end
 end
