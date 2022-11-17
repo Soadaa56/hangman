@@ -23,7 +23,7 @@ module Display
   def display_incomplete_word
     # figure out how to add 1-2 indents of space before displaying solved letters seperated by '-'
     <<~HEREDOC
-      #{@solved_letters.join('-')}
+      #{@solved_letters.join(' ')}
 
     HEREDOC
   end
@@ -70,6 +70,8 @@ module Display
   def display_quit_game
     <<~HEREDOC
       Terminating game...
+      btw, the word was
+      '#{@word_copy.join()}'
 
     HEREDOC
   end
@@ -85,8 +87,8 @@ module Display
   def display_game_over_failure
     <<~HEREDOC
 
-      You lost all your lives! The word was 
-      #{@word_copy}
+      You lost all your lives! The word was -
+      '#{@word_copy.join()}'
 
     HEREDOC
   end
@@ -94,8 +96,8 @@ module Display
   def display_game_over_victory
     <<~HEREDOC
 
-      Winner!!! You figured out that the word was 
-      #{@word_copy}
+      Winner!!! You figured out that the word was -
+      '#{@word_copy.join()}'
     
       HEREDOC
   end

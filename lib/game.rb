@@ -1,6 +1,7 @@
 # game.rb
 
 require_relative './display'
+require 'yaml'
 require 'pry-byebug'
 
 class Game
@@ -60,12 +61,11 @@ class Game
       puts display_player_option_inputs
       player_input
     when 'save'
-      display_save_game
+      puts display_save_game
       sleep(1)
       # comment here as reminder to change this text when save is added
       # will be changed to a display_save_game method
-      puts 'This feature is not yet implemented'
-      binding.pry
+      save_game
       player_input
     when 'letters'
       puts display_available_letters
@@ -121,5 +121,11 @@ class Game
       puts display_game_over_victory
       exit
     end
+  end
+
+  def save_game
+    output = File.new('save_game.yml', 'w')
+    output.puts YAML.dump(game)
+    output.close
   end
 end
