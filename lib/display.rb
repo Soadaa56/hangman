@@ -13,6 +13,14 @@ module Display
     HEREDOC
   end
 
+  def display_input_load_game
+    <<~HEREDOC
+    
+      \e[33mPress 1 to start a new game, or 2 to load a previously saved game.\e[0m
+
+    HEREDOC
+  end
+
   def display_word_length
     <<~HEREDOC
       \e[34mYour random word is #{@word.length} letters long.\e[0m
@@ -24,6 +32,14 @@ module Display
     # figure out how to add 1-2 indents of space before displaying solved letters seperated by a space
     <<~HEREDOC
     \e[1m\e[32m #{@solved_letters.join(' ')}\e[0m
+
+    HEREDOC
+  end
+
+  def display_invalid_input
+    <<~HEREDOC
+
+      \e[32mYour input was invalid, try again.\e[0m
 
     HEREDOC
   end
@@ -69,9 +85,9 @@ module Display
 
   def display_quit_game
     <<~HEREDOC
-      Terminating game...
-      btw, the word was
-      '#{@word_copy.join()}'
+      \e[31m  Terminating game...
+        btw, the word was\e[0m
+          \e[36m'#{@word_copy.join()}'\e[0m
 
     HEREDOC
   end

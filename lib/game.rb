@@ -21,10 +21,20 @@ class Game
 
   def start_game
     puts display_instructions
+    puts display_input_load_game
+    input_load_game
+  end
+
+  def input_load_game
+    input = gets.chomp
+   if input == '1'
     new_game
-    # future methods to be placed
-    # Start new game on 1
-    # Load saved game on 2
+   elsif input == '2'
+    load_game
+   else
+    puts display_invalid_input
+    input_load_game
+   end
   end
 
   def new_game
@@ -34,6 +44,7 @@ class Game
     # allows @solved_letters to have the same number of indecies to the amount @word has, so that it is displayed to the player before guessing
     @word.each { @solved_letters << '_'}
     puts display_word_length
+    sleep(1)
     puts display_player_option_inputs
     player_turn
   end
