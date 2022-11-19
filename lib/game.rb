@@ -3,7 +3,6 @@
 require_relative './display'
 require_relative './database'
 require 'yaml'
-require 'pry-byebug'
 
 # Code for the game Hangman
 class Game
@@ -69,7 +68,7 @@ class Game
       # comment here as reminder to change this text when save is added
       # will be changed to a display_save_game method
       save_game
-      player_input
+      exit
     when 'letters'
       puts display_available_letters
       player_input
