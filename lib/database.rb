@@ -33,8 +33,8 @@ module Database
       initialize
     else
       puts display_player_option_inputs
-    puts display_word_length
-    player_turn
+      puts display_word_length
+      player_turn
     end
   end
 end
