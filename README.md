@@ -1,5 +1,5 @@
 # Hangman
-[![Run on Repl.it](https://replit.com/badge/github/Soadaa56/hangman)](https://replit.com/new/github/Soadaa56/hangman) (Need to fix run button)
+[![Run on Repl.it](https://replit.com/badge/github/Soadaa56/hangman)](https://replit.com/new/github/Soadaa56/hangman)
 
 This project is part of the The Odin Project's Ruby curriculum.
 
