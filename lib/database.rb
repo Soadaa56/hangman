@@ -26,9 +26,15 @@ module Database
   end
 
   def load_game
-    load_game_file
-    puts display_player_option_inputs
+    begin
+      load_game_file
+    rescue => exception
+      puts display_no_save_file
+      initialize
+    else
+      puts display_player_option_inputs
     puts display_word_length
     player_turn
+    end
   end
 end

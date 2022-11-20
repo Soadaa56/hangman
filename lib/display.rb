@@ -5,7 +5,7 @@ module Display
   def display_instructions
     <<~HEREDOC
 
-      Instructions for Hangman:
+      \e[1m\e[31mInstructions for Hangman:\e[0m
 
       A random word will be chosen with a length of 5-12 letters. On each turn you will guess one letter and if the letter is a part of the random word it will be 
       shown to you. You will keep guessing letters until you find each letter of the random word or you run out of guesses (7).
@@ -23,7 +23,7 @@ module Display
 
   def display_word_length
     <<~HEREDOC
-      \e[34mYour random word is #{@word.length} letters long.\e[0m
+        \e[1m\e[34m Your random word is #{@word.length} letters long.\e[0m
 
     HEREDOC
   end
@@ -117,5 +117,14 @@ module Display
         '#{@word_copy.join()}'\e[0m
     
       HEREDOC
+  end
+
+  def display_no_save_file
+    <<~HEREDOC
+
+      \e[1m\e[33mYou're just trying to break my game, huh?
+      There is no save file to load!\e[0m
+
+    HEREDOC
   end
 end
