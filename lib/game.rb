@@ -44,7 +44,7 @@ class Game
     # allows @solved_letters to have the same number of indecies to the amount @word has, so that it is displayed to the player before guessing
     @word.each { @solved_letters << '_'}
     puts display_word_length
-    sleep(1)
+    # sleep(1)
     puts display_player_option_inputs
     player_turn
   end

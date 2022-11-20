@@ -71,14 +71,15 @@ module Display
   def display_save_game
     <<~HEREDOC
 
-      Saving game...
+      \e[1m\e[35mSaving game...\e[0m
 
     HEREDOC
   end
 
   def display_available_letters
     <<~HEREDOC
-      #{@available_letters}
+
+      \e[32m#{@available_letters}\e[0m
 
     HEREDOC
   end
