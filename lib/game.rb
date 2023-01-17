@@ -76,8 +76,6 @@ class Game
     when 'save'
       puts display_save_game
       sleep(1)
-      # comment here as reminder to change this text when save is added
-      # will be changed to a display_save_game method
       save_game
       exit
     when 'letters'
